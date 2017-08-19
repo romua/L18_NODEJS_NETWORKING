@@ -9,6 +9,16 @@
   "author": "romua",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.2",
     "express": "^4.15.4"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romua/L18_NODEJS_NETWORKING.git"
+  },
+  "bugs": {
+    "url": "https://github.com/romua/L18_NODEJS_NETWORKING/issues"
+  },
+  "homepage": "https://github.com/romua/L18_NODEJS_NETWORKING#readme"
 }
