@@ -1,10 +1,32 @@
-[{
-  "id": 1,
-  "username": "johndoe",
-  "email": "john.doe@myownserver.com"
-},
-{
-  "id": 2,
-  "username": "johndoesfriend",
-  "email": "friend.of.john.doe@myownserver.com"
-}]
+[
+  {
+    "id": 2,
+    "username": "johndoesfriend",
+    "email": "friend.of.john.doe@myownserver.com",
+    "password": "2a1cgv7e0be2d26my8g9"
+  },
+  {
+    "id": 3,
+    "username": "romchenko",
+    "email": "romafromukraine@gmail.com",
+    "password": "qweqwewew"
+  },
+  {
+    "id": 4,
+    "username": "leap",
+    "email": "romafromukraine@gmail.com",
+    "password": "12312312423423423432"
+  },
+  {
+    "id": 5,
+    "username": "leap",
+    "email": "romafromukraine@gmail.com",
+    "password": "12312312423423423432"
+  },
+  {
+    "id": 6,
+    "username": "leap",
+    "email": "romafromukraine@gmail.com",
+    "password": "12312312423423423432"
+  }
+]
