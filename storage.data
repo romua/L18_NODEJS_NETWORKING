@@ -1,5 +1,11 @@
 [
   {
+    "id": 1,
+    "username": "johndoe",
+    "email": "john.doe@myownserver.com",
+    "password": "q8xowdnaxitf3g3ffjjl"
+  },
+  {
     "id": 2,
     "username": "johndoesfriend",
     "email": "friend.of.john.doe@myownserver.com",
@@ -24,9 +30,9 @@
     "password": "12312312423423423432"
   },
   {
-    "id": 6,
-    "username": "leap",
-    "email": "romafromukraine@gmail.com",
-    "password": "12312312423423423432"
+    "id": 7,
+    "username": "fedorov",
+    "email": "ivanov@gmail.ru",
+    "password": "1346798523"
   }
 ]
