@@ -3,6 +3,11 @@ var app        = express();                 // define our app using express
 var bodyParser = require('body-parser');
 var fs         = require('fs');
 var router     = express.Router();
+var bcrypt     = require('bcrypt');
+
+const saltRounds = 10;
+
+
 
 app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
@@ -51,36 +56,40 @@ router.route('/')
             _username = req.body.username,
             _email = req.body.email,
             _password = req.body.password;
-
-        fs.readFile('storage.data', 'utf8', function (err, data) {
-            if (err) {
-                return console.log(err);
-            }
-            var users = JSON.parse(data);
-            console.log(users);
-
-            if (!isUserInStorage(_id, users)){
-                res.sendStatus(201);
-                users.push(
-                    {
-                        id: _id,
-                        username: _username,
-                        email: _email,
-                        password: _password
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+            bcrypt.hash(_password, salt, function(err, hash) {
+                fs.readFile('storage.data', 'utf8', function (err, data) {
+                    if (err) {
+                        return console.log(err);
                     }
-                );
-                console.log(JSON.stringify(users, null, 2));
-                fs.writeFile('storage.data', JSON.stringify(users, null, 2),  'utf8', function (err) {
-                    if (err) throw err;
-                    console.log('The file has been saved!');
+                    var users = JSON.parse(data);
+                    console.log(users);
+
+                    if (!isUserInStorage(_id, users)){
+                        res.sendStatus(201);
+
+                        users.push(
+                            {
+                                id: _id,
+                                username: _username,
+                                email: _email,
+                                password: hash
+                            }
+                        );
+                        console.log(JSON.stringify(users, null, 2));
+                        fs.writeFile('storage.data', JSON.stringify(users, null, 2),  'utf8', function (err) {
+                            if (err) throw err;
+                            console.log('The file has been saved!');
+                        });
+                        console.log(users);
+                    } else {
+                        res.sendStatus(409);
+                        console.log('User exist');
+                    }
                 });
-                console.log(users);
-            } else {
-                res.sendStatus(409);
-                console.log('User exist');
-            }
+                console.log(typeof _id);
+            });
         });
-        console.log(typeof _id);
     });
 
 router.route('/:id')
@@ -109,38 +118,38 @@ router.route('/:id')
     })
 
     .put(function (req, res) {
-        fs.readFile('storage.data', 'utf8', function (err,data) {
-            if (err) {
-                return console.log(err);
-            }
-            var users = JSON.parse(data);
-            console.log(users);
+        var _id = parseInt(req.params.id,10),
+            _username = req.body.username,
+            _email = req.body.email,
+            _password = req.body.password;
+        bcrypt.genSalt(saltRounds, function(err, salt) {
+            bcrypt.hash(_password, salt, function(err, hash) {
+                fs.readFile('storage.data', 'utf8', function (err,data) {
+                    if (err) {
+                        return console.log(err);
+                    }
+                    var users = JSON.parse(data);
+                    if(isUserInStorage(_id, users)){
+                        users[_id-1] = {
+                            id: _id,
+                            username: _username,
+                            email: _email,
+                            password: hash
+                        };
 
-            var _id = parseInt(req.params.id,10),
-                _username = req.body.username,
-                _email = req.body.email,
-                _password = req.body.password;
-            console.log(_id);
-            if(isUserInStorage(_id, users)){
-                users[_id-1] = {
-                    id: _id,
-                    username: _username,
-                    email: _email,
-                    password: _password
-                };
-
-                res.send(JSON.stringify(users[_id-1], null, 2));
-                fs.writeFile('storage.data', JSON.stringify(users, null, 2),  'utf8', function (err) {
-                    if (err) throw err;
-                    console.log('The file has been saved!');
+                        res.send(JSON.stringify(users[_id-1], null, 2));
+                        fs.writeFile('storage.data', JSON.stringify(users, null, 2),  'utf8', function (err) {
+                            if (err) throw err;
+                            console.log('The file has been saved!');
+                        });
+                        console.log('user with '+_id +' has been updated');
+                    } else {
+                        res.send(404);
+                        console.log('user has been not found');
+                    }
                 });
-                console.log('user with '+_id +' has been updated');
-            } else {
-                res.send(404);
-                console.log('user has been not found');
-            }
+            });
         });
-
     })
 
     .delete(function (req, res) {
