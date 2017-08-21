@@ -170,7 +170,7 @@ router.route('/:id')
                     }
                     if(isUserInStorageById(_id, users)){
                         var userIdToShow = 0;
-                        var dataToShow = [];
+                        var dataToShow = {};
                         for (var i = 0; i < users.length; i++) {
                             if(users[i].id === _id){
                                 users[i] = {
@@ -179,8 +179,11 @@ router.route('/:id')
                                     email: _email,
                                     password: hash
                                 };
+                                userIdToShow = i;
+                                dataToShow = users[i];
                             }
                         }
+                        delete dataToShow.password;
 
                     res.send(JSON.stringify(dataToShow, null, 2));
                     fs.writeFile('storage.data', JSON.stringify(users, null, 2),  'utf8', function (err) {
