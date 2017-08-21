@@ -1,62 +1,8 @@
 [
   {
     "id": 1,
-    "username": "johndoe",
-    "email": "john.doe@myownserver.com",
-    "password": "q8xowdnaxitf3g3ffjjl"
-  },
-  {
-    "id": 2,
-    "username": "johndoesfriend",
-    "email": "friend.of.john.doe@myownserver.com",
-    "password": "2a1cgv7e0be2d26my8g9"
-  },
-  {
-    "id": 4,
-    "username": "leap",
-    "email": "romafromukraine@gmail.com",
-    "password": "12312312423423423432"
-  },
-  {
-    "id": 5,
-    "username": "leap",
-    "email": "romafromukraine@gmail.com",
-    "password": "12312312423423423432"
-  },
-  {
-    "id": 7,
-    "username": "fedorov",
+    "username": "fedorov1",
     "email": "ivanov@gmail.ru",
-    "password": "1346798523"
-  },
-  {
-    "id": 8,
-    "username": "fedorov",
-    "email": "ivanov@gmail.ru",
-    "password": "1346798523"
-  },
-  {
-    "id": 9,
-    "username": "fedorov",
-    "email": "ivanov@gmail.ru",
-    "password": "1346798523"
-  },
-  {
-    "id": 10,
-    "username": "fedorov",
-    "email": "ivanov@gmail.ru",
-    "password": "1346798523"
-  },
-  {
-    "id": 11,
-    "username": "fedorov",
-    "email": "ivanov@gmail.ru",
-    "password": "$2a$10$XOlDRnjhbU7tBrMk/7.bZePo5r4FX0A6phvLSmiEuCPox2sr.Mn.."
-  },
-  {
-    "id": 12,
-    "username": "fedorov",
-    "email": "ivanov@gmail.ru",
-    "password": "$2a$10$FwITdMvsiFG76hG0fA7Sx.JXZjLnFAVIZgpU/gP/m6FZYTtECJoJa"
+    "password": "$2a$10$asP56SuVaN4gJOJTVROec.IN3Z1UB3Ut56OMmEyOy7yIgFoOHSQ2i"
   }
 ]
