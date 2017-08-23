@@ -1,0 +1,62 @@
+admin@romaua MINGW32 /e/!EPAM/L18_NODEJS_NETWORKING (master)
+$ npm test
+
+> myapp@1.0.0 test E:\!EPAM\L18_NODEJS_NETWORKING
+> mocha tests/
+
+
+
+  Service api
+    /users
+      GET
+        1) will return positive result with status code: 200
+      POST
+        - will return negative result with status code: 400
+        √ will return positive result with status code: 201 (141ms)
+        √ will return negative result with status code: 409 (313ms)
+    /users/1
+      GET
+        2) will return positive result with status code: 200
+      PUT
+        3) will return positive result with status code: 200
+      DELETE
+        4) will return positive result with status code: 200
+
+
+  2 passing (1s)
+  1 pending
+  4 failing
+
+  1) Service api /users GET will return positive result with status code: 200:
+
+      AssertionError: expected '[object Object]' to equal '[]'
+      + expected - actual
+
+      -[object Object]
+      +[]
+
+      at Context.it (tests\api.tests.js:23:24)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:188:7)
+
+  2) Service api /users/1 GET will return positive result with status code: 200:
+     ReferenceError: mock is not defined
+      at Context.it (tests\api.tests.js:80:45)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:188:7)
+
+  3) Service api /users/1 PUT will return positive result with status code: 200:
+     AssertionError: expected undefined to equal 'test1'
+      at Context.it (tests\api.tests.js:98:24)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:188:7)
+
+  4) Service api /users/1 DELETE will return positive result with status code: 200:
+     AssertionError: expected undefined to equal 'User has been successfully removed.'
+      at Context.it (tests\api.tests.js:109:24)
+      at <anonymous>
+      at process._tickCallback (internal/process/next_tick.js:188:7)
+
+
+
+npm ERR! Test failed.  See above for more details.
